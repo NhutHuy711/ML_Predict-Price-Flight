@@ -1,82 +1,50 @@
 # ML-Predict-Price-Flight
-This project presents a comprehensive exploratory data analysis (EDA) on a cleaned airline dataset, with the aim of identifying patterns and factors that influence flight pricing. The study employs statistical summaries and various visualizations to examine relationships among categorical and numerical features.
+This project conducts an end-to-end analysis and modeling process on a flight pricing dataset. The goal is to understand influential factors in pricing and build predictive models for estimating ticket prices based on multiple flight attributes.
 
-**Dataset Overview**
-The dataset used in this analysis is titled Clean_Dataset.csv, and includes key attributes such as:
+##  Dataset
 
-airline: Name of the carrier
+The dataset (`Clean_Dataset.csv`) contains flight-related features such as:
+- **Airline**
+- **Source and Destination Cities**
+- **Departure and Arrival Time**
+- **Class** (Economy/Business)
+- **Duration and Total Stops**
+- **Price** (Target Variable)
 
-source_city and destination_city: Departure and arrival locations
+##  1. Data Preprocessing
 
-departure_time and arrival_time: Temporal information of the flights
+- Unnecessary columns (`Unnamed: 0`, `flight`) were removed.
+- Checked for and dropped duplicates.
+- Categorical features were inspected and prepared for encoding.
+- Missing values were assessed and handled appropriately.
 
-duration, total_stops, and class: Operational characteristics
+##  2. Exploratory Data Analysis (EDA)
 
-price: Target variable for analysis
+Extensive visualizations were employed:
+- **Pie charts** to analyze airline, source, and destination city distributions.
+- **Boxplots** to visualize how features like `airline`, `city`, `class`, and `stops` influence `price`.
+- **Histograms** to observe the distribution of numerical variables such as `duration`.
 
-**Data Preparation**
-The dataset is imported and initial inspections are performed (e.g., shape, null values).
+### Notable Insights:
+- **Vistara** and **Air India** operate the majority of flights and exhibit broader price ranges.
+- **Business class** flights predictably cost more than **Economy**.
+- **More stops** and **longer durations** tend to increase ticket price.
 
-Non-informative columns such as Unnamed: 0 and flight are removed due to high cardinality and lack of predictive value.
+##  3. Feature Engineering
 
-Duplicate records are identified and addressed.
+- Time-related fields were analyzed and transformed.
+- Categorical features were encoded.
+- Features with high cardinality or low relevance were removed.
 
-The data is preserved through a working copy to ensure integrity during transformations.
+##  4. Model Development
 
-**Exploratory Data Analysis (EDA)**
-1. Airline Distribution and Price Range
-Distribution of flights across different airlines is visualized using pie charts.
+Three regression models were developed and evaluated:
+- **Linear Regression**
+- **Decision Tree Regressor**
+- **Random Forest Regressor**
 
-A boxplot is used to analyze the variation in ticket prices among airlines.
+### Model Evaluation:
+- Performance metrics include **MAE**, **RMSE**, and **R² Score**.
+- Applied **5-Fold Cross-Validation** to ensure robust evaluation.
 
-Key Insight: Vistara and Air India account for the majority of flights and also exhibit a broader price range.
-
-2. Source and Destination Cities
-Flight frequency and price variability are analyzed based on both source and destination cities.
-
-Results are illustrated via pie charts and boxplots.
-
-Observation: Specific city pairs exhibit notable price differences.
-
-3. Other Factors (available in full notebook)
-The effect of class, total_stops, duration, and departure/arrival time on price is also explored.
-
-Correlation analysis is conducted to identify multicollinearity or strong linear relationships.
-
-**Visualizations**
-The study employs various visualization techniques to support findings:
-
-Pie charts: Distribution across categorical variables (e.g., airlines, cities)
-
-Boxplots: Price dispersion by categorical groups
-
-Count plots and histograms: Frequency analysis
-
-**Preliminary Findings**
-Airline, class, and total stops are strong indicators of ticket pricing.
-
-Business class flights predictably incur significantly higher fares.
-
-Duration and stopovers demonstrate a positive correlation with price.
-
-**Data Cleaning and Feature Engineering**
-Categorical variables are encoded for future modeling.
-
-Time-based features are transformed and extracted for improved utility.
-
-Redundant or noisy variables are removed to reduce dimensionality.
-
-**Model Development**
-Three supervised regression models were implemented:
-
-Linear Regression
-
-Decision Tree Regressor
-
-Random Forest Regressor
-
-**Model Evaluation**
-Evaluation metrics used: Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and R² Score
-
-Applied 5-Fold Cross-Validation to ensure reliable model assessment
 
